@@ -1,0 +1,127 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1110-g18392a46)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_00000290db108c00 .scope module, "tb_signed_arithmetic" "tb_signed_arithmetic" 2 3;
+ .timescale -9 -12;
+v00000290db114910_0 .var "A", 3 0;
+v00000290db1140f0_0 .var "B", 3 0;
+v00000290db1149b0_0 .var "mode", 0 0;
+v00000290db114a50_0 .net "overflow", 0 0, L_00000290db10dd30;  1 drivers
+v00000290db113d30_0 .net "result", 3 0, L_00000290db114c30;  1 drivers
+S_00000290db0cbdb0 .scope module, "uut" "signed_arithmetic" 2 11, 3 1 0, S_00000290db108c00;
+ .timescale -9 -12;
+    .port_info 0 /INPUT 4 "A";
+    .port_info 1 /INPUT 4 "B";
+    .port_info 2 /INPUT 1 "mode";
+    .port_info 3 /OUTPUT 4 "result";
+    .port_info 4 /OUTPUT 1 "overflow";
+P_00000290db10cb60 .param/l "N" 0 3 2, +C4<00000000000000000000000000000100>;
+L_00000290db10d860 .functor NOT 4, v00000290db1140f0_0, C4<0000>, C4<0000>, C4<0000>;
+L_00000290db173040 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+L_00000290db10da20 .functor XNOR 1, v00000290db1149b0_0, L_00000290db173040, C4<0>, C4<0>;
+L_00000290db10de10 .functor XNOR 1, L_00000290db113dd0, L_00000290db1bc4f0, C4<0>, C4<0>;
+L_00000290db10db70 .functor XOR 1, L_00000290db1bc8b0, L_00000290db1bb370, C4<0>, C4<0>;
+L_00000290db10dd30 .functor AND 1, L_00000290db10de10, L_00000290db10db70, C4<1>, C4<1>;
+v00000290db0cbf40_0 .net "A", 3 0, v00000290db114910_0;  1 drivers
+v00000290db114b90_0 .net "B", 3 0, v00000290db1140f0_0;  1 drivers
+v00000290db113fb0_0 .net "B_2s_comp", 3 0, L_00000290db114190;  1 drivers
+v00000290db1142d0_0 .net "B_selected", 3 0, L_00000290db114af0;  1 drivers
+v00000290db1145f0_0 .net *"_ivl_0", 3 0, L_00000290db10d860;  1 drivers
+v00000290db113e70_0 .net *"_ivl_15", 0 0, L_00000290db113dd0;  1 drivers
+v00000290db114370_0 .net *"_ivl_17", 0 0, L_00000290db1bc4f0;  1 drivers
+v00000290db1144b0_0 .net *"_ivl_18", 0 0, L_00000290db10de10;  1 drivers
+L_00000290db172ff8 .functor BUFT 1, C4<0001>, C4<0>, C4<0>, C4<0>;
+v00000290db114730_0 .net/2u *"_ivl_2", 3 0, L_00000290db172ff8;  1 drivers
+v00000290db114550_0 .net *"_ivl_21", 0 0, L_00000290db1bc8b0;  1 drivers
+v00000290db1147d0_0 .net *"_ivl_23", 0 0, L_00000290db1bb370;  1 drivers
+v00000290db114410_0 .net *"_ivl_24", 0 0, L_00000290db10db70;  1 drivers
+v00000290db114690_0 .net/2u *"_ivl_6", 0 0, L_00000290db173040;  1 drivers
+v00000290db114230_0 .net *"_ivl_8", 0 0, L_00000290db10da20;  1 drivers
+v00000290db114870_0 .net "mode", 0 0, v00000290db1149b0_0;  1 drivers
+v00000290db113f10_0 .net "overflow", 0 0, L_00000290db10dd30;  alias, 1 drivers
+v00000290db114050_0 .net "result", 3 0, L_00000290db114c30;  alias, 1 drivers
+L_00000290db114190 .arith/sum 4, L_00000290db10d860, L_00000290db172ff8;
+L_00000290db114af0 .functor MUXZ 4, L_00000290db114190, v00000290db1140f0_0, L_00000290db10da20, C4<>;
+L_00000290db114c30 .arith/sum 4, v00000290db114910_0, L_00000290db114af0;
+L_00000290db113dd0 .part v00000290db114910_0, 3, 1;
+L_00000290db1bc4f0 .part L_00000290db114af0, 3, 1;
+L_00000290db1bc8b0 .part L_00000290db114c30, 3, 1;
+L_00000290db1bb370 .part v00000290db114910_0, 3, 1;
+    .scope S_00000290db108c00;
+T_0 ;
+    %vpi_call 2 20 "$dumpfile", "sim/signed_arithmetic.vcd" {0 0 0};
+    %vpi_call 2 21 "$dumpvars", 32'sb00000000000000000000000000000000, S_00000290db108c00 {0 0 0};
+    %vpi_call 2 23 "$display", "Time | A    | B    | Mode | Result | Overflow" {0 0 0};
+    %vpi_call 2 24 "$display", "-----------------------------------------------" {0 0 0};
+    %pushi/vec4 3, 0, 4;
+    %store/vec4 v00000290db114910_0, 0, 4;
+    %pushi/vec4 2, 0, 4;
+    %store/vec4 v00000290db1140f0_0, 0, 4;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000290db1149b0_0, 0, 1;
+    %delay 10000, 0;
+    %vpi_call 2 29 "$display", "%4t | %b | %b | ADD  | %b   | %b", $time, v00000290db114910_0, v00000290db1140f0_0, v00000290db113d30_0, v00000290db114a50_0 {0 0 0};
+    %pushi/vec4 5, 0, 4;
+    %store/vec4 v00000290db114910_0, 0, 4;
+    %pushi/vec4 13, 0, 4;
+    %store/vec4 v00000290db1140f0_0, 0, 4;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000290db1149b0_0, 0, 1;
+    %delay 10000, 0;
+    %vpi_call 2 34 "$display", "%4t | %b | %b | ADD  | %b   | %b", $time, v00000290db114910_0, v00000290db1140f0_0, v00000290db113d30_0, v00000290db114a50_0 {0 0 0};
+    %pushi/vec4 11, 0, 4;
+    %store/vec4 v00000290db114910_0, 0, 4;
+    %pushi/vec4 2, 0, 4;
+    %store/vec4 v00000290db1140f0_0, 0, 4;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000290db1149b0_0, 0, 1;
+    %delay 10000, 0;
+    %vpi_call 2 39 "$display", "%4t | %b | %b | ADD  | %b   | %b", $time, v00000290db114910_0, v00000290db1140f0_0, v00000290db113d30_0, v00000290db114a50_0 {0 0 0};
+    %pushi/vec4 5, 0, 4;
+    %store/vec4 v00000290db114910_0, 0, 4;
+    %pushi/vec4 3, 0, 4;
+    %store/vec4 v00000290db1140f0_0, 0, 4;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000290db1149b0_0, 0, 1;
+    %delay 10000, 0;
+    %vpi_call 2 44 "$display", "%4t | %b | %b | SUB  | %b   | %b", $time, v00000290db114910_0, v00000290db1140f0_0, v00000290db113d30_0, v00000290db114a50_0 {0 0 0};
+    %pushi/vec4 3, 0, 4;
+    %store/vec4 v00000290db114910_0, 0, 4;
+    %pushi/vec4 5, 0, 4;
+    %store/vec4 v00000290db1140f0_0, 0, 4;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000290db1149b0_0, 0, 1;
+    %delay 10000, 0;
+    %vpi_call 2 49 "$display", "%4t | %b | %b | SUB  | %b   | %b", $time, v00000290db114910_0, v00000290db1140f0_0, v00000290db113d30_0, v00000290db114a50_0 {0 0 0};
+    %pushi/vec4 7, 0, 4;
+    %store/vec4 v00000290db114910_0, 0, 4;
+    %pushi/vec4 1, 0, 4;
+    %store/vec4 v00000290db1140f0_0, 0, 4;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000290db1149b0_0, 0, 1;
+    %delay 10000, 0;
+    %vpi_call 2 54 "$display", "%4t | %b | %b | ADD  | %b   | %b", $time, v00000290db114910_0, v00000290db1140f0_0, v00000290db113d30_0, v00000290db114a50_0 {0 0 0};
+    %pushi/vec4 8, 0, 4;
+    %store/vec4 v00000290db114910_0, 0, 4;
+    %pushi/vec4 15, 0, 4;
+    %store/vec4 v00000290db1140f0_0, 0, 4;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000290db1149b0_0, 0, 1;
+    %delay 10000, 0;
+    %vpi_call 2 59 "$display", "%4t | %b | %b | ADD  | %b   | %b", $time, v00000290db114910_0, v00000290db1140f0_0, v00000290db113d30_0, v00000290db114a50_0 {0 0 0};
+    %delay 10000, 0;
+    %vpi_call 2 62 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "tb/tb_signed_arithmetic.v";
+    "rtl/signed_arithmetic.v";
