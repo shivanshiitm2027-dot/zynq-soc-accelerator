@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!-- Allegro Color/Visibility Settings -->
+<!-- Contains settings for the Color Dialog and Visiblity Pane -->
+<!-- Version 4.0 -->
+<ColorVisibility>
+
+  <LastTab>Layers</LastTab>
+
+  <Favorites/>
+
+  <VisColumns>
+    <Column>Plan</Column>
+    <Column>Etch</Column>
+    <Column>Via Class</Column>
+    <Column>Pin</Column>
+    <Column>Drc Error Class</Column>
+  </VisColumns>
+
+  <VisSizing>
+    <Space>4</Space>
+    <ButtonSize>16</ButtonSize>
+  </VisSizing>
+
+  <DisplayFilter>
+    <MinValue>0</MinValue>
+    <Text>true</Text>
+    <Via>true</Via>
+    <Pin>true</Pin>
+    <DRC>true</DRC>
+    <Shape>true</Shape>
+    <Void>true</Void>
+    <EmbeddedNetName>true</EmbeddedNetName>
+  </DisplayFilter>
+
+  <GlobalVisibility>Show</GlobalVisibility>
+
+  <HideUnusedLayers>Hide</HideUnusedLayers>
+
+  <ViewSelection>Show</ViewSelection>
+
+  <StackupSelection>Show</StackupSelection>
+
+  <Conductors>Show</Conductors>
+
+  <Planes>Show</Planes>
+
+  <Masks>Show</Masks>
+
+  <Dielectrics>Show</Dielectrics>
+
+  <DieStacks>Show</DieStacks>
+
+  <Profiles>Show</Profiles>
+
+  <LayerNum>Hide</LayerNum>
+
+  <LayerID>Hide</LayerID>
+
+</ColorVisibility>
